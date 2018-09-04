@@ -1,0 +1,22 @@
+Cab reimbursement  create queries:
+1)
+create table CR_USER_DTLS(user_id integer, user_name varchar(20), user_first_nm varchar(30),
+ user_last_nm varchar(30),
+                            user_email varchar(30), user_repo_mngr varchar(20), user_repo_mngr_email varchar(20), 
+                            account_team_email varchar(20), user_team varchar(20), user_shift varchar(20), user_home_add varchar(50), 
+                            office_desk_contact varchar(15), personal_contact varchar(15),
+                            primary key(user_id));
+
+
+2)
+create table CR_LOGIN(user_id integer, user_name varchar(20), user_pwd varchar(20), primary key(user_id), foreign key(user_id) references CR_USER_DTLS(user_id));
+
+
+3)
+create table CR_ROLES(role_id varchar(10) primary key, role_desc varchar(20));
+
+
+4)
+create table CR_USER_GROUP(user_grp_id integer primary key, user_id integer, role_id varchar(10), 
+                        foreign key(user_id) references CR_USER_DTLS(user_id), 
+                        foreign key(role_id) references CR_ROLES(role_id));
